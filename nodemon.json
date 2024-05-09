@@ -1,0 +1,5 @@
+{
+  "ignore": ["*.pyc", "__pycache__/", ".vscode/", ".git/"],
+  "ext": "py",
+  "exec": "python -m flask run --reload"
+}
