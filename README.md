@@ -8,7 +8,7 @@ pip install -r requirements.txt
 
 Run:
 ```sh
-python app.py
+python -m flask run --reload
 ```
 
 Call endpoints:

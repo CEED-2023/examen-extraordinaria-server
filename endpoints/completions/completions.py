@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, request
+from .invoke_LLM import invoke_LLM
 
 completions_bp = Blueprint('completions', __name__)
 
@@ -13,22 +14,16 @@ def completions():
     messages = data['messages']
 
     # Process messages using the specified model and return a response
-    response = process_messages(messages)
+    try:
+        response = process_messages(messages)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
     return jsonify({'message': response})
 
 
-def process_messages(model, messages, temperature):
-    # This is a placeholder function.
-    # You would use the specified model to generate a response based on the given messages.
-    # For demonstration purposes, it simply echoes back the first message.
-
-    if messages:
-        first_message = messages[0]
-        role = first_message.get('role', 'user')
-        content = first_message.get('content', '')
-
-        if role == 'user':
-            return {'role': 'assistant', 'content': f'\n\n{content}'}
-
-    return {'error': 'No message provided or invalid message format'}
+def process_messages(messages):
+    if messages and isinstance(messages, list):
+        return invoke_LLM(messages)
+    else:
+        return {'error': 'No message provided or invalid message format'}
