@@ -1,5 +1,5 @@
 from flask import Flask
-from endpoints.chats import chats_bp
+from endpoints import chats_bp
 
 app = Flask(__name__)
 
