@@ -1,16 +1,9 @@
 import time
-import os
-from groq import Groq
 from g4f.client import Client
 
-# MODEL = "gpt-3.5-turbo"
-MODEL = "llama3-70b-8192"
+MODEL = "gpt-3.5-turbo"
 
-api_key=os.environ.get("GROQ_API_KEY")
-
-client = Groq(
-    api_key=api_key,
-)
+client = Client()
 
 def call_LLM(chat_completion, max_retries=5, delay=1):
     retries = 0
