@@ -14,7 +14,7 @@ cors = CORS(app,
         r"/*": {
             "origins": [
                 "http://localhost:*",
-                "https://ceedgpt.netlify.app/"
+                "https://ceedgpt.netlify.app"
             ]
         }
     })
