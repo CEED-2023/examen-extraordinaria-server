@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_cors import CORS
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -7,7 +8,10 @@ from endpoints import chats_bp
 
 app = Flask(__name__)
 
-# Register blueprint for chats endpoints
+# Allow CORS for local development
+cors = CORS(app, resources={r"/*": {"origins": "http://localhost:*"}})
+
+# Register endpoints
 app.register_blueprint(chats_bp)
 
 if __name__ == '__main__':
