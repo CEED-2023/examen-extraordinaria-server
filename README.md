@@ -89,3 +89,11 @@ Response:
 }
 
 ```
+
+### Deploy
+
+fly secrets set GROQ_API_KEY=<your api key>
+fly deploy
+
+
+
