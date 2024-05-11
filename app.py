@@ -9,7 +9,15 @@ from endpoints import chats_bp
 app = Flask(__name__)
 
 # Allow CORS for local development
-cors = CORS(app, resources={r"/*": {"origins": "http://localhost:*"}})
+cors = CORS(app,
+    resources={
+        r"/*": {
+            "origins": [
+                "http://localhost:*",
+                "https://ceedgpt.netlify.app/"
+            ]
+        }
+    })
 
 # Register endpoints
 app.register_blueprint(chats_bp)
